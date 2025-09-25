@@ -1,0 +1,24 @@
+services:
+  mongodb:
+    container_name: mongodb8
+    image: mongo:8.0
+    ports:
+      - "27017:27017"
+    restart: on-failure
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: root
+
+    # Bind mount mySQL data directory to host directory
+    volumes:
+      - type: bind
+        source: ./data/mongodb8
+        target: /data/db
+        read_only: false
+    networks:
+      - mongodb-development
+
+networks:
+  mongodb-development:
+    name: mongodb-development
+    driver: bridge
