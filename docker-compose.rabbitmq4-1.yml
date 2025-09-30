@@ -1,0 +1,21 @@
+services:
+  rabbitmq4-1:
+    image: rabbitmq:4.1-management
+    container_name: rabbitmq4-1
+    hostname: rabbitmq-dev
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    environment:
+      RABBITMQ_DEFAULT_USER: root
+      RABBITMQ_DEFAULT_PASS: root
+    volumes:
+      - ./data/rabbitmq4-1:/var/lib/rabbitmq
+      - ./config/rabbitmq4-1/conf.d:/etc/rabbitmq/conf.d
+    networks:
+      - rabbitmq4-1-development
+
+networks:
+  rabbitmq4-1-development:
+    name: rabbitmq4-1-development
+    driver: bridge
