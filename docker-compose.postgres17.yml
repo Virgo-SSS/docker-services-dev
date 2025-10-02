@@ -1,0 +1,18 @@
+services:
+  postgres:
+    image: postgis/postgis:17-3.5
+    container_name: postgres17
+    environment:
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: root
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./data/postgres17:/var/lib/postgresql/data
+    networks:
+      - postgres-development
+
+networks:
+  postgres-development:
+    driver: bridge
+    name: postgres-development
