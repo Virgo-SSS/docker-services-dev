@@ -8,8 +8,8 @@ services:
     restart: on-failure
     volumes:
       - type: bind
-        source: ./config/redis-latest/redis.conf
-        target: /usr/local/etc/redis/redis.conf
+        source: ./config/redis-latest
+        target: /usr/local/etc/redis
         read_only: true
       - type: bind 
         source: ./data/redis-latest
